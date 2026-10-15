@@ -7,9 +7,18 @@ import edge_tts
 from PIL import Image
 from tensorflow import keras
 
-BASE_DIR = "/content/drive/MyDrive/EcoSortAI"
-MODEL_PATH = os.path.join(BASE_DIR, "ecosort_model.keras")
-LABELS_PATH = os.path.join(BASE_DIR, "class_names.json")
+
+import os
+import gdown
+
+MODEL_PATH = "ecosort_model.keras"
+LABELS_PATH = "class_names.json"
+if not os.path.exists(MODEL_PATH):
+    gdown.download(
+        id="1POdnaRmf4Cn7V86kh3iQXtIi8nE_zU5o",
+        output=MODEL_PATH,
+        quiet=False
+    )
 
 model = keras.models.load_model(MODEL_PATH)
 
